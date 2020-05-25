@@ -1,0 +1,17 @@
+@import url(./__text/error-indicator__text.css);
+@import url(./__icon/error-indicator__icon.css);
+
+.error-indicator {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  max-width: 250px;
+  text-align: center;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -5,12 +5,7 @@ import './spiner.css';
 const Spiner = () => {
   return (
     <div className="spiner">
-      <div>
-        <div>
-          <div>
-          </div>
-        </div>
-      </div>
+      <i className="spiner__elem" />
     </div>
   );
 }
