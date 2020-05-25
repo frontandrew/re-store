@@ -1,11 +1,27 @@
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import reduser from './redusers';
+
 import App from './components/app';
 
-console.log('Hello ReStore')
+const store = createStore(reduser);
 
-ReactDOM.render(<App />, document.querySelector('.root'));
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+console.log('Hello ReStore')
+console.log(store.getState());
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('.root')
+);
 
 
 

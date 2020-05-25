@@ -1,14 +1,19 @@
 import React from 'react';
 
 import Spiner from '../spiner';
-import ErrorIndicator from '../error-indicator';
+import ErrorButton from '../error-button/';
+import ErrorBoundry from '../error-boundry/';
+
+
 
 const App = () => {
   return (
-    <div>
-      <ErrorIndicator />
-      <Spiner />
-    </div>
+    <ErrorBoundry>
+      <div>
+        <Spiner />
+        <ErrorButton />
+      </div>
+    </ErrorBoundry>
   );
 }
 
