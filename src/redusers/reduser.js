@@ -1,14 +1,14 @@
 
 const initState = {
-  hasError: false,
+  books:[],
 }
 
 const reduser = (state = initState, action) => {
 
   switch (action.type) {
-    case 'ERR':
+    case 'BOOKS_LOADED':
       return state = {
-        hasError: true
+        books: action.payload
       };    
       
     default:

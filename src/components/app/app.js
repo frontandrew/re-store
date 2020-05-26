@@ -1,19 +1,19 @@
 import React from 'react';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
-import Spiner from '../spiner';
-import ErrorButton from '../error-button/';
-import ErrorBoundry from '../error-boundry/';
-
-
+import { HomePage, CartPage } from '../pages';
 
 const App = () => {
   return (
-    <ErrorBoundry>
-      <div>
-        <Spiner />
-        <ErrorButton />
-      </div>
-    </ErrorBoundry>
+    <div className="app">     
+
+      <Switch>
+        <Route exact path= "/home" component={HomePage}/>
+        <Route path= "/cart" component={CartPage}/>
+        <Redirect from="/" to="/home" />
+      </Switch>
+
+    </div>
   );
 }
 
