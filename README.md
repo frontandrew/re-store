@@ -1,5 +1,5 @@
-# Re-Store
-## 0.0.1
+# Re-Store (react+redux)
+## 0.0.2
 ---
   
 ### About:
@@ -8,7 +8,7 @@ Hi and wellcome!
 
 <div align="center">
 
-[![re-store screenshot](https:// "github.io/re-store")](https://frontandrew.github.io/re-store/)
+[![re-store screenshot](https://avatars.mds.yandex.net/get-pdb/2825311/40b9676f-7e6e-4b64-8356-269d791e3cf9/s1200 "github.io/re-store")](https://frontandrew.github.io/re-store/)
   
 </div>
 
@@ -39,6 +39,14 @@ Hi and wellcome!
 4. Run `npm run start` to develop/debug project local. It will start webpack-dev-server on your local, port 3000.
 
 ### What's new:
+
+<details>
+    <summary>v0.0.2 Components and god-like Preview</summary>
+    <li>Author has been made avesome git readme preveiw</li>
+    <li>Styles has been added</li>
+    <li>Some components has been added</li>
+    <li>Update read.me</li>
+</details>
 
 <details>
     <summary>v0.0.1 Project Start</summary>
