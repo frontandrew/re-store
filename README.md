@@ -8,7 +8,7 @@ Hi and wellcome!
 
 <div align="center">
 
-[![re-store screenshot](https://avatars.mds.yandex.net/get-pdb/2974645/bfaf2f5f-7ce9-40bf-9496-2ec250da9ba1/s1200 "github.io/re-store")](https://frontandrew.github.io/re-store/)
+[![re-store screenshot](https://avatars.mds.yandex.net/get-pdb/2825311/40b9676f-7e6e-4b64-8356-269d791e3cf9/s1200 "github.io/re-store")](https://frontandrew.github.io/re-store/)
   
 </div>
 
