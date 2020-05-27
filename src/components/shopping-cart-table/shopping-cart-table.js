@@ -4,43 +4,47 @@ import './shopping-cart-table.css';
 
 const ShoppingCartTable = () => {
   return (
-    <div class="shopping-cart-table">
+    <div className="shopping-cart-table">
       <h2>Your Order</h2>
 
-      <table class="table">
+      <table className="table">
         <thead>
-          <td> #</td>
-          <th>Item</th>
-          <th>Count</th>
-          <th>Price</th>
-          <th>Action</th>
+          <tr>
+            <th> #</th>
+            <th>Item</th>
+            <th>Count</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
         </thead>
 
         <tbody>
-          <th>1</th>
-          <td>Site Reliability Engineering</td>
-          <td>2</td>
-          <td>$40</td>
+          <tr>
+            <th>1</th>
+            <td>Site Reliability Engineering</td>
+            <td>2</td>
+            <td>$40</td>
 
-          <td>
-            <button
-              onClick={() => { }}
-              className="btn btn-outline-danger btn-sm float-right">
-              <i className="fa fa-trash-o" />
-            </button>
+            <td>
+              <button
+                onClick={() => { }}
+                className="btn btn-outline-danger btn-sm float-right">
+                <i className="fa fa-trash-o" />
+              </button>
 
-            <button
-              onClick={() => { }}
-              className="btn btn-outline-success btn-sm float-right">
-              <i className="fa fa-plus-circle" />
-            </button>
+              <button
+                onClick={() => { }}
+                className="btn btn-outline-success btn-sm float-right">
+                <i className="fa fa-plus-circle" />
+              </button>
 
-            <button
-              onClick={() => { }}
-              className="btn btn-outline-warning btn-sm float-right">
-              <i className="fa fa-minus-circle" />
-            </button>
-          </td>
+              <button
+                onClick={() => { }}
+                className="btn btn-outline-warning btn-sm float-right">
+                <i className="fa fa-minus-circle" />
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
 

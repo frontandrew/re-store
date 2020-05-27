@@ -12,12 +12,7 @@ import { BookstoreServiceProvider } from './components/bookstore-service-context
 
 const bookstoreService = new BookstoreService();
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
-console.log('Hello ReStore')
-console.log(store.getState());
+console.log('Hello! Welcome to ReStore')
 
 ReactDOM.render(
   <Provider store={store}>

@@ -6,7 +6,7 @@ import { HomePage, CartPage } from '../pages';
 
 const App = () => {
   return (
-    <main role="main" class="container">
+    <main role="main" className="container">
       <ShopHeader numItems={2} total={243}/>
       <Switch>
         <Route exact path="/home" component={HomePage} />
