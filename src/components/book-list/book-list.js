@@ -8,6 +8,7 @@ import { withBookstoreService } from '../hoc';
 import { compose } from '../../utils';
 
 import BookListItem from '../book-list-item';
+import Spiner from '../spiner';
 
 //STYLES
 import './book-list.css';
@@ -15,14 +16,19 @@ import './book-list.css';
 class BookList extends Component {
 
   componentDidMount() {
-    const { bookstoreService } = this.props;
-    const data = bookstoreService.getBooks();
-
-    this.props.booksLoaded(data);
+    const { bookstoreService, booksLoaded } = this.props;
+    bookstoreService.getBooks()
+      .then((responce) => booksLoaded(responce));
   }
 
   render() {
-    const { books } = this.props;
+    const { books, loading } = this.props;
+    if (loading) {
+      return (
+        <Spiner />
+      );
+    }
+
     return (
       <ul className="book-list">
         {
@@ -39,7 +45,8 @@ class BookList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    books: state.books
+    books: state.books,
+    loading: state.loading,
   }
 }
 

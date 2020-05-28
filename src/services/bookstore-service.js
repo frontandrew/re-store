@@ -1,7 +1,6 @@
 export default class BookstoreService {
 
-  getBooks() {
-    return [
+  data = [
       {
         id: 1,
         title: 'Production-Ready Microservices',
@@ -16,6 +15,12 @@ export default class BookstoreService {
         price: 30.21,
         cover: 'https://images-na.ssl-images-amazon.com/images/I/419zAwJJH4L._SX415_BO1,204,203,200_.jpg',
       },
-    ]
-  }  
+    ]  
+
+  getBooks() {
+    const request = new Promise((resolve) => {
+      setTimeout(() => resolve(this.data), 1500)
+    })
+    return request;
+  }
 }
