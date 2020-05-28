@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //COMPONENTS
-import { booksLoaded, booksRequested, booksError } from '../../actions';
+import { fetchBooks } from '../../actions';
 import { withBookstoreService } from '../hoc';
 import { compose } from '../../utils';
 
@@ -18,14 +18,7 @@ import './book-list.css';
 class BookList extends Component {
 
   componentDidMount() {
-    const { bookstoreService, booksLoaded, booksRequested, booksError } = this.props;
-    booksRequested();
-    bookstoreService.getBooks()
-      .then(responce => booksLoaded(responce))
-      .catch(err => {
-        booksError(err);
-        throw err;
-      });
+    this.props.fetchBooks();
   }
 
   render() {
@@ -56,6 +49,12 @@ class BookList extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch, { bookstoreService }) => {
+  return {
+    fetchBooks: fetchBooks(dispatch, bookstoreService)
+  }
+}
+
 const mapStateToProps = (state) => {
   return {
     books: state.books,
@@ -66,5 +65,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   withBookstoreService(),
-  connect(mapStateToProps, { booksLoaded, booksRequested, booksError }),
+  connect(mapStateToProps, mapDispatchToProps),
 )(BookList);

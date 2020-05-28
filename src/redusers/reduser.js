@@ -8,21 +8,21 @@ const initState = {
 const reduser = (state = initState, action) => {
 
   switch (action.type) {
-    case 'BOOKS_LOADED':
+    case 'FETCH_BOOKS_SUCCESS':
       return state = {
         books: action.payload,
         loading: false,
         error: null,
       };
 
-    case 'BOOKS_REQUESTED':
+    case 'FETCH_BOOKS_REQUEST':
       return state = {
         books: [],
         loading: true,
         error: null,
       };
 
-    case 'BOOKS_ERROR':
+    case 'FETCH_BOOKS_FAILURE':
       return state = {
         books: [],
         loading: false,
