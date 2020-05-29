@@ -7,6 +7,29 @@ const initState = {
   orderTotal: 2490,
 }
 
+const updateCartItems = (state, id) => {  
+  const inCartItem = state.cartItems.find((item) => item.id === id)
+  if (inCartItem === undefined) {
+    const book = state.books.find((book) => book.id === id);
+    const newItem = {
+      id: book.id,
+      title: book.title,
+      count: 1,
+      total: book.price,
+      price: book.price,
+    }
+    return [...state.cartItems, newItem];
+  } else {
+    inCartItem.count = inCartItem.count + 1;
+    inCartItem.total = (inCartItem.count + 1) * inCartItem.price;
+
+    const newCatrItems = state.cartItems.map((item) => {
+      return item.id === id ? inCartItem : item
+    });
+    return newCatrItems
+  }
+}
+
 const reduser = (state = initState, action) => {
 
   console.log(action.type);
@@ -36,26 +59,14 @@ const reduser = (state = initState, action) => {
         error: true,
       };
 
-    case 'BOOK_ADDED_TO_CART':
-      const bookId = action.payload;
-      const book = state.books.find((book) => book.id === bookId);
-      const newItem = {
-        id: book.id,
-        title: book.title,
-        count: 1,
-        total: book.price,
-      }
-      return state = {
+    case 'BOOK_ADDED_TO_CART':      
+        return state = {
         ...state,
-        cartItems: [
-          ...state.cartItems,
-          newItem
-        ]
-      };
+        cartItems: updateCartItems(state, action.payload)
+      }
 
     default:
       return state;
   }
 };
-
 export default reduser;

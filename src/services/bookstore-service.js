@@ -15,6 +15,13 @@ export default class BookstoreService {
       price: 30.21,
       cover: 'https://images-na.ssl-images-amazon.com/images/I/419zAwJJH4L._SX415_BO1,204,203,200_.jpg',
     },
+    {
+      id: 3,
+      title: 'The Road to React: Your journey to master plain yet pragmatic React.js',
+      author: 'Robin Wieruch',
+      price: 23.99,
+      cover: 'https://m.media-amazon.com/images/I/31apmbgpwkL.jpg',
+    },
   ]
 
   getBooks() {
