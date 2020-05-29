@@ -3,8 +3,8 @@ const booksLoaded = (newBooks) => ({
   payload: newBooks
 });
 
-const booksRequested = () => ({ 
-  type: 'FETCH_BOOKS_REQUEST' 
+const booksRequested = () => ({
+  type: 'FETCH_BOOKS_REQUEST'
 });
 
 const booksError = (error) => ({
@@ -20,9 +20,17 @@ const fetchBooks = (dispatch, bookstoreService) => () => {
       dispatch(booksError(err));
       throw err;
     });
+}
+
+const bookAddedToCart = (bookId) => {
+  return {
+    type: 'BOOK_ADDED_TO_CART',
+    payload: bookId
   }
+}
 
 
 export {
-  fetchBooks
+  fetchBooks,
+  bookAddedToCart
 }

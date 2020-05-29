@@ -3,24 +3,13 @@ const initState = {
   books: [],
   loading: true,
   error: null,
-  cartItems: [
-    {
-      id: 1,
-      title: 'TEST_BOOK_1',
-      count: 3,
-      total: 1500,
-    },
-    {
-      id: 2,
-      title: 'TEST_BOOK_2',
-      count: 2,
-      total: 990,
-    },
-  ],
+  cartItems: [],
   orderTotal: 2490,
 }
 
 const reduser = (state = initState, action) => {
+
+  console.log(action.type);
 
   switch (action.type) {
     case 'FETCH_BOOKS_SUCCESS':
@@ -45,6 +34,23 @@ const reduser = (state = initState, action) => {
         books: [],
         loading: false,
         error: true,
+      };
+
+    case 'BOOK_ADDED_TO_CART':
+      const bookId = action.payload;
+      const book = state.books.find((book) => book.id === bookId);
+      const newItem = {
+        id: book.id,
+        title: book.title,
+        count: 1,
+        total: book.price,
+      }
+      return state = {
+        ...state,
+        cartItems: [
+          ...state.cartItems,
+          newItem
+        ]
       };
 
     default:

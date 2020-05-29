@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //COMPONENTS
-import { fetchBooks } from '../../actions';
+import { fetchBooks, bookAddedToCart } from '../../actions';
 import { withBookstoreService } from '../hoc';
 import { compose } from '../../utils';
 
@@ -16,13 +16,17 @@ import './book-list.css';
 
 
 
-const BookList = ({ books }) => {
+const BookList = ({ books, onAddedToCart }) => {
   return (
     <ul className="book-list">
       {
         books.map((book) => {
           return (
-            <li key={book.id}><BookListItem book={book} /></li>
+            <li key={book.id}>
+              <BookListItem 
+              onAddedToCart={() => onAddedToCart(book.id)}
+              book={book} />
+              </li>
           )
         })
       }
@@ -37,7 +41,7 @@ class BookListContainer extends Component {
   }
 
   render() {
-    const { books, loading, error } = this.props;
+    const { books, loading, error, onAddedToCart } = this.props;
     if (loading) {
       return (
         <Spiner />
@@ -51,14 +55,15 @@ class BookListContainer extends Component {
     }
 
     return (
-      <BookList books={books} />
+      <BookList books={books} onAddedToCart={onAddedToCart} />
     );
   }
 }
 
 const mapDispatchToProps = (dispatch, { bookstoreService }) => {
   return {
-    fetchBooks: fetchBooks(dispatch, bookstoreService)
+    fetchBooks: fetchBooks(dispatch, bookstoreService),
+    onAddedToCart: (id) => dispatch(bookAddedToCart(id)),
   }
 }
 
