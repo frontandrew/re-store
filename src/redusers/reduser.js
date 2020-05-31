@@ -7,27 +7,19 @@ const initState = {
   orderTotal: 2490,
 }
 
-const updateCartItems = (state, id) => {  
-  const inCartItem = state.cartItems.find((item) => item.id === id)
-  if (inCartItem === undefined) {
-    const book = state.books.find((book) => book.id === id);
-    const newItem = {
-      id: book.id,
-      title: book.title,
-      count: 1,
-      total: book.price,
-      price: book.price,
-    }
-    return [...state.cartItems, newItem];
-  } else {
-    inCartItem.count = inCartItem.count + 1;
-    inCartItem.total = (inCartItem.count + 1) * inCartItem.price;
+const updateCartItem = (cartItem = {}, book) => {
+  const { id = book.id, count = 0, title = book.title, total = 0 } = cartItem;
 
-    const newCatrItems = state.cartItems.map((item) => {
-      return item.id === id ? inCartItem : item
-    });
-    return newCatrItems
+  return cartItem = {
+    id,
+    title,
+    count: count + 1,
+    total: (+total + book.price).toFixed(2),
   }
+}
+
+const updateCartItems = (items, item, newItem) => {
+  return item ? items.map(item => item.id === newItem.id ? newItem : item) : [...items, newItem]
 }
 
 const reduser = (state = initState, action) => {
@@ -59,14 +51,20 @@ const reduser = (state = initState, action) => {
         error: true,
       };
 
-    case 'BOOK_ADDED_TO_CART':      
-        return state = {
+    case 'BOOK_ADDED_TO_CART':
+      const bookId = action.payload;
+      const book = state.books.find(book => book.id === bookId);
+      const item = state.cartItems.find(item => item.id === bookId);
+
+      const newItem = updateCartItem(item, book);
+      return state = {
         ...state,
-        cartItems: updateCartItems(state, action.payload)
+        cartItems: updateCartItems(state.cartItems, item, newItem)
       }
 
     default:
       return state;
   }
 };
+
 export default reduser;
