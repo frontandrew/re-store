@@ -68,11 +68,11 @@ const mapDispatchToProps = (dispatch, { bookstoreService }) => {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ booksList }) => {
   return {
-    books: state.books,
-    loading: state.loading,
-    error: state.error,
+    books: booksList.books,
+    loading: booksList.loading,
+    error: booksList.error,
   }
 }
 
