@@ -1,5 +1,5 @@
 # Re-Store (react+redux)
-## 0.0.2
+## 0.0.3
 ---
   
 ### About:
@@ -16,7 +16,9 @@ Hi and wellcome!
 
 ### Features:
 
-- User can bye something
+- User can see store product list
+- User can add products to cart
+- User can manage in cart products
 
 ### Use technology:
 
@@ -41,11 +43,18 @@ Hi and wellcome!
 ### What's new:
 
 <details>
+    <summary>v0.0.3 Store Cart</summary>
+    <li>User can add products to cart now</li>
+    <li>User can manage in cart products now</li>
+    <li>Update readme</li>
+</details>
+
+<details>
     <summary>v0.0.2 Components and god-like Preview</summary>
     <li>Author has been made avesome git readme preveiw</li>
     <li>Styles has been added</li>
     <li>Some components has been added</li>
-    <li>Update read.me</li>
+    <li>Update readme</li>
 </details>
 
 <details>

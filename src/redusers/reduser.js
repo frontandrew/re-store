@@ -15,6 +15,13 @@ const updateCartItems = (items, item, idx) => {
     ]
   }
 
+  if (item.count === 0) {
+    return [
+      ...items.slice(0, idx),
+      ...items.slice(idx + 1),
+    ]
+  }
+
   return [
     ...items.slice(0, idx),
     item,
@@ -22,17 +29,30 @@ const updateCartItems = (items, item, idx) => {
   ]
 }
 
-const updateItem = (item = {}, book) => {
+const updateItem = (item = {}, book, quantity) => {
   const { id = book.id, count = 0, title = book.title, total = 0 } = item;
 
   return {
     id,
     title,
-    count: count + 1,
-    total: +(total + book.price).toFixed(2),
+    count: count + quantity,
+    total: +(total + quantity * book.price).toFixed(2),
   }
 }
 
+const updateOrder = (state, bookId, quantity) => {
+  const { books, cartItems } = state;
+  const book = books.find(({ id }) => id === bookId);
+  const itemIndex = cartItems.findIndex(({ id }) => id === bookId);
+  const item = cartItems[itemIndex];
+
+  const newItem = updateItem(item, book, quantity);
+  return state = {
+    ...state,
+    cartItems: updateCartItems(cartItems, newItem, itemIndex)
+  }
+
+}
 
 const reduser = (state = initState, action) => {
 
@@ -64,21 +84,18 @@ const reduser = (state = initState, action) => {
       };
 
     case 'BOOK_ADDED_TO_CART':
-      const bookId = action.payload;
-      const book = state.books.find((book) => book.id === bookId);
-      const itemIndex = state.cartItems.findIndex(({ id }) => id === bookId);
-      const item = state.cartItems[itemIndex];
+      return updateOrder(state, action.payload, 1);
 
-      const newItem = updateItem(item, book);
-      return state = {
-        ...state,
-        cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
-      }
+    case 'BOOK_REMOVED_FROM_CART':
+      return updateOrder(state, action.payload, -1);
 
+    case 'ALL_BOOKS_REMOVED_FROM_CART':
+      const item = state.cartItems.find(({ id }) => id === action.payload);
+      return updateOrder(state, action.payload, -item.count);
 
     default:
       return state;
-  }
+  };
 };
 
 export default reduser;

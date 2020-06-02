@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './shopping-cart-table.css';
 
-import { bookAddedToCart } from '../../actions';
+import { bookAddedToCart, bookRemovedFromCart, allBooksRemovedFromCart } from '../../actions';
 
 
 const ShoppingCartTable = ({ items, total, onDecrease, onIncrease, onDelete }) => {
@@ -78,8 +78,8 @@ const mapStateToProps = ({ cartItems, orderTotal }) => {
 
 const mapDispathToProps = {
   onIncrease: bookAddedToCart,
-  onDecrease: bookAddedToCart,
-  onDelete: bookAddedToCart,
+  onDecrease: bookRemovedFromCart,
+  onDelete: allBooksRemovedFromCart,
 }
 
 export default connect(mapStateToProps, mapDispathToProps)(ShoppingCartTable);
