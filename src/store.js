@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import reduser from './redusers';
 
 const LogMiddleware = (store) => (dispatch) => (action) => {
@@ -14,9 +15,15 @@ const stringMiddleware = () => (dispatch) => (action) => {
   return dispatch(action);
 }
 
-const store = createStore(reduser, applyMiddleware(stringMiddleware, LogMiddleware));
+const store = createStore(reduser, applyMiddleware(thunkMiddleware, stringMiddleware, LogMiddleware));
 
-store.dispatch('STRING_TO_ACTION_MIDDLEWARE');
-store.dispatch('LOG_MIDDLEWARE');
+const timeoutActionCreator = (timeout) => (dispatch) => {
+  setTimeout(() => dispatch({
+      type: 'TIMEOUT_ACTION'
+    }), timeout)
+  }
+
+
+store.dispatch(timeoutActionCreator(3000));
 
 export default store;
