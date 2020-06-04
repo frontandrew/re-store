@@ -43,6 +43,13 @@ Hi and wellcome!
 ### What's new:
 
 <details>
+    <summary>v0.1.0 All Total</summary>
+    <li>Total order count has been added</li>
+    <li>User can manage in cart products now</li>
+    <li>Update readme</li>
+</details>
+
+<details>
     <summary>v0.0.3 Store Cart</summary>
     <li>User can add products to cart now</li>
     <li>User can manage in cart products now</li>
