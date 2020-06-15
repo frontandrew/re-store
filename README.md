@@ -1,5 +1,5 @@
 # Re-Store (react+redux)
-## 0.0.3
+## 0.1.1
 ---
   
 ### About:
@@ -41,6 +41,18 @@ Hi and wellcome!
 4. Run `npm run start` to develop/debug project local. It will start webpack-dev-server on your local, port 3000.
 
 ### What's new:
+
+<details>
+    <summary>v0.1.1 Main and Cart separate</summary>
+    <li>Main page has been separated from cart page</li>
+</details>
+
+<details>
+    <summary>v0.1.0 All Total</summary>
+    <li>Total order count has been added</li>
+    <li>User can manage in cart products now</li>
+    <li>Update readme</li>
+</details>
 
 <details>
     <summary>v0.0.3 Store Cart</summary>
